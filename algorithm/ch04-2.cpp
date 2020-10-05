@@ -1,12 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "IntStack.h"
 
+
+typedef struct {
+	int max;
+	int ptr;
+	int *stk;
+}IntStack;
 
 int Initialize(IntStack *s, int max)
 {
 	s->ptr = 0;
-	if ((s->stk = calloc(max, sizeof(int))) == NULL) {
+	if ((s->(const int)stk = calloc(max, sizeof(int))) == NULL) {
 		s->max = 0;
 		return -1;
 	}
@@ -14,7 +19,7 @@ int Initialize(IntStack *s, int max)
 	return 0;
 }
 
-int Push(IntStack* s, int x)
+int Push(IntStack *s, int x)
 {
 	if (s->ptr >= s->max)					
 		return -1;
@@ -22,7 +27,7 @@ int Push(IntStack* s, int x)
 	return 0;
 }
 
-int Pop(IntStack* s, int* x)
+int Pop(IntStack *s, int* x)
 {
 	if (s->ptr <= 0)						
 		return -1;
@@ -30,7 +35,7 @@ int Pop(IntStack* s, int* x)
 	return 0;
 }
 
-int Peek(const IntStack* s, int* x)
+int Peek(const IntStack *s, int* x)
 {
 	if (s->ptr <= 0)						
 		return -1;
@@ -38,7 +43,7 @@ int Peek(const IntStack* s, int* x)
 	return 0;
 }
 
-void Clear(IntStack* s)
+void Clear(IntStack *s)
 {
 	s->ptr = 0;
 }
@@ -59,7 +64,7 @@ int IsEmpty(const IntStack *s)
 
 int IsFull(const IntStack *s)
 {
-	return s->ptr >= s->Max;
+	return s->ptr >= s->max;
 }
 
 int Search(const IntStack *s, int x)
@@ -67,7 +72,7 @@ int Search(const IntStack *s, int x)
 	int i;
 	for (i = s->ptr - 1; i >= 0; i--)
 		if (s->stk[i] == x)
-			return i
+			return i;
 		return -1;
 }
 
